@@ -1,0 +1,4 @@
+
+ JPA's es un estandar para modelar las clases y objetos que van hacia la BD
+
+ 
