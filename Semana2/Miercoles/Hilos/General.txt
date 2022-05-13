@@ -1,0 +1,69 @@
+Los hilos son subprocesos ligeros, que son habilidades pequeñas de procesamiento
+funcionando como una via de ejecucion separada
+
+
+las ventajas
+-que no se bloque al usuario por hacer varias tareas al mismo tiempo ya que no se pueden estar ejecutar las tareas de manera paralela (simulteando)
+-se pueden hacer muchas tareas haciendo de manera simultanea ahorrando tiempo
+-si se produce un error en un hilo no se compromete con las demas.
+
+el que se puedan hacer varias tareas al mismo tiempo (multitarea)
+
+multiTask(multitarea) en el procesador: multi proceso o multi hilo
+multiTask basado en proceso asigna un area de memoria para cada cosa que se necesite, siendo un proceso pesado, con un precio alto, y al momento de quererlo cambiar va a ser lento
+    un espacio de memoria tendra los registros, la lista de la actualizacion, mapa de la memoria
+
+los procesos pesados es muy alto el costo ya que se necesita mas memoria con mucha memoria ram y el procesador deberia de ser potente
+
+la multiTask basada en hilos. los hilos van a compartir el mismo espacio de memoria.
+    que seria 1 fraccion de memoria por proceso, compartiendo el mismo espacio
+    por lo que el hilo es ligero y el costo es bajo
+
+multiTask es que pueda ejecutar multiples acciones. 
+
+procesos, se tiene 1 entrada por cada 1 de tus procesos
+en hilos se tiene que el total de entradas que se tengan se van a tener distintos hilos entrando varios al mismo tiempo
+
+concurrencia: se auxilia del multiprocesamiento como del multihilo para generar la multitarea que pueda ejecutar todas estas peticiones al mismo tiempo
+    esto es dependiendo de la cantidad de procesos que se van ejecutando
+
+el Hilo tiene 5 estados
+ 1.Thread. clase en donde se encuentra el hilo
+    Thread hilo = new Thread();
+    aqui empieza el ciclo de vida del hilo que esta en NEW. si se crea la instancia de la clase thread ahi estara y va a ser antes de la invoacion start
+ 2.Runnable. ya viene despues del metodo start 
+    Thread hilo = new Thread();
+    //se inicia el hilo
+    hilo.start();
+ 3.Running. ThreadSheduler ya se esta trabajando. administrador de los hilos, que es cuando se selecciona el hilo en ejecucion 
+ 4.Non-Rumuble: es como si se tuviera en un estado Blocked
+ 5.Terminates: es cuando el hilo ya se murio y ya no se encuentra en el metodo runn
+     de acuerdo con oracle dice que son 4 estados
+
+     Correctamente estaria
+     New, Runnable, Running, Terminated
+        entre en Runnable y Running estaria en Non-Runnable. esto pasaria cuando se utilizarian las palabras slepp, block, wait
+
+un hilo tiene un ciclo de vida que viven en la memoria, cuando la lap se apaga se mueren 
+
+se tienen 2 formas para trabajar con hilos
+- utilizando la clase thread. es porque esta clase proporciona los constructores y metodos para poder crear y realizar operaciones conocidos.
+    por lo cual se extiende de la clase Object e implementa una interfaz que se llama runnable
+            Class Thread implements Runnable
+    el implements es (COMO LO HACEN) y en interface(QUE HACEN)
+
+    los constructores que tiene la clase thread son
+    1.newThread();
+    se puede cargar un constructores
+    2.Thread (String nombre)
+    se puede pasar una interfaz
+    3.Thread (Runnable)
+    se puede pasar el compuesto
+    Threas(Runnable,String name)
+
+como Thread implementa lo que tiene Runnable entonces es mas facil trabajar directamente con Runnable
+    
+    la interface runnable lo que hace es que necesita ser implementada por cualquier clase, instancias vayan a  destinadas para que se ejecuten por will
+    teniendo unicamente un metodo llamado run()
+        public void run() -- metodo para ejecutar la accion de un hilo. TODO LO QUE SE QUIERA QUE HAGA EL HILO, VA AQUI
+
